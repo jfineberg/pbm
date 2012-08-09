@@ -2,11 +2,11 @@ source 'http://rubygems.org'
 
 gem 'rails', '3.2.0'
 gem 'arel'
-gem 'pg'
+gem 'mysql2'
 gem 'rake'
 gem 'rack'
 
-gem 'paperclip'
+gem 'paperclip', '~> 2.7'
 gem 'devise'
 gem 'devise-encryptable'
 gem 'inherited_resources'
@@ -33,14 +33,15 @@ gem 'newrelic_rpm'
 gem 'dalli'
 gem 'oink'
 gem 'jquery-ui-rails'
+gem 'fastercsv'
 
 group :test do
   gem 'cucumber-rails', :require => false
   gem 'rspec'
   gem 'rspec-rails'
   gem 'spork'
-  gem 'factory_girl'
-  gem 'factory_girl_rails', :require => false
+  gem 'factory_girl', '~> 2.0.0'
+  gem 'factory_girl_rails', '~> 1.1'
   gem 'cucumber_factory'
   gem 'cucumber'
   gem 'launchy'
@@ -57,7 +58,7 @@ end
 group :development, :test do
   gem 'database_cleaner'
   gem 'gherkin'
-  gem 'ruby-growl'
+  gem 'ruby-growl', '~> 3.0'
   gem 'pickle'
   gem 'bullet'
   gem 'email_spec'
