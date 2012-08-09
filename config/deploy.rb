@@ -2,12 +2,13 @@ require 'bundler/capistrano'
 
 set :application, "pinballmap.com"
 set :repository,  "git://github.com/scottwainstock/pbm.git"
+set :branch, "dreamhost_return"
 
 set :scm, :git
 
-role :web, "pinballmap.com"
-role :app, "pinballmap.com"
-role :db,  "pinballmap.com", :primary => true
+role :web, "degrassidigest.com"
+role :app, "degrassidigest.com"
+role :db,  "degrassidigest.com", :primary => true
 
 set :user, "thezitremedy"
 set :deploy_to, "/home/thezitremedy/work/pbm"
