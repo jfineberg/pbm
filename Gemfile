@@ -41,7 +41,7 @@ group :test do
   gem 'rspec-rails'
   gem 'spork'
   gem 'factory_girl', '~> 2.0.0'
-  gem 'factory_girl_rails', '~> 1.1'
+  gem 'factory_girl_rails', '~> 1.1', :require => false
   gem 'cucumber_factory'
   gem 'cucumber'
   gem 'launchy'
