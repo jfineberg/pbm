@@ -312,8 +312,8 @@ DEPENDENCIES
   email_spec
   escape_utils
   exception_notification_rails3
-  factory_girl (~> 2.0.0)
-  factory_girl_rails (~> 1.1)
+  factory_girl
+  factory_girl_rails
   fastercsv
   geocoder
   gherkin
@@ -329,10 +329,10 @@ DEPENDENCIES
   mysql2
   newrelic_rpm
   oink
-  paperclip (~> 2.7)
+  paperclip
   pickle
   pony
-  rack
+  rack (= 1.4.1)
   rails (= 3.2.0)
   rails_admin
   rake

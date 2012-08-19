@@ -4,9 +4,9 @@ gem 'rails', '3.2.0'
 gem 'arel'
 gem 'mysql2'
 gem 'rake'
-gem 'rack'
+gem "rack", "=1.4.1"
 
-gem 'paperclip', '~> 2.7'
+gem 'paperclip'
 gem 'devise'
 gem 'devise-encryptable'
 gem 'inherited_resources'
@@ -40,8 +40,8 @@ group :test do
   gem 'rspec'
   gem 'rspec-rails'
   gem 'spork'
-  gem 'factory_girl', '~> 2.0.0'
-  gem 'factory_girl_rails', '~> 1.1', :require => false
+  gem 'factory_girl'
+  gem 'factory_girl_rails', :require => false
   gem 'cucumber_factory'
   gem 'cucumber'
   gem 'launchy'
