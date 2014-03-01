@@ -133,24 +133,20 @@ describe LocationMachineXrefsController do
     end
 
     it 'adds by machine name from input' do
-      FactoryGirl.create(:machine, :name => 'Sassy Madness')
-      FactoryGirl.create(:machine, :name => 'Sassy From The Black Lagoon')
-      FactoryGirl.create(:machine, :name => 'Cleo Game')
+      FactoryGirl.create(:machine, :name => 'Test Machine Name')
+      FactoryGirl.create(:machine, :name => 'Another Test Machine')
+      FactoryGirl.create(:machine, :name => 'Cleo')
 
       visit "/#{@region.name}/?by_location_id=#{@location.id}"
 
-      find("#add_machine_location_banner_#{@location.id}").click
+      page.find("div#add_machine_location_banner_#{@location.id}").click
 
-      sleep(1)
+      page.execute_script "jQuery('#add_machine_by_name').unbind('blur')"
+      fill_in("add_machine_by_name", :with => 'test')
 
-      fill_in("add_machine_by_name", :with => 'sassy')
-
-      page.execute_script %Q{ jQuery('#add_machine_by_name').trigger('focus') }
-      page.execute_script %Q{ jQuery('#add_machine_by_name').trigger('keydown') }
-
-      page.should have_xpath('//a[contains(text(), "Sassy From The Black Lagoon")]')
-      page.should have_xpath('//a[contains(text(), "Sassy Madness")]')
-      page.should_not have_xpath('//a[contains(text(), "Cleo Game")]')
+      page.should have_xpath('//a[contains(text(), "Another")]')
+      page.should have_xpath('//a[contains(text(), "Machine Name")]')
+      page.should_not have_xpath('//a[contains(text(), "Cleo")]')
     end
 
     it 'searches by machine name from input' do
@@ -185,7 +181,7 @@ describe LocationMachineXrefsController do
 
       page.should have_xpath('//a[contains(text(), "North")]')
       page.should have_xpath('//a[contains(text(), "South")]')
-      page.should_not have_xpath('//a[contains(text(), "Cleo West")]')
+      page.should_not have_xpath('//a[contains(text(), "West")]')
       page.should_not have_xpath('//a[contains(text(), "Sassy")]')
     end
   end

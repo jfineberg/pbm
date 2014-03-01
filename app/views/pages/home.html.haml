@@ -44,3 +44,8 @@
             = "{{region.machines_count}} Machines"
   .clear
   %br/
+
+  :javascript
+    angular.element(jQuery('#map_summaries')).ready(function() {
+      angular.bootstrap(jQuery('#map_summaries'), ["pbm"]);
+    });

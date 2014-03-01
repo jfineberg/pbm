@@ -14,11 +14,11 @@ pbmControllers.controller('HomeController', ['$scope', '$http', '$timeout',
 
 pbmControllers.controller('AutocompleteController', ['$scope', '$http',
     function($scope, $http) {
-        $scope.getNames = function(regionID, type, term) {
-            return $http.get('api/v1/regions/' + regionID + '/' + type + '_names.json', {
+        $scope.getNames = function(regionID, regionLevelSearch, type, term) {
+            return $http.get('/api/v1/regions/' + regionID + '/' + type + '_names.json', {
                 params: {
                     term: term,
-                    region_level_search: 1,
+                    region_level_search: regionLevelSearch,
                 }
             }).then(function(res){
                 var names = [];

@@ -8,7 +8,7 @@
         /%span.info or use the text box
       = select_tag "by_#{key}_id", options_for_select([['All', '']]) + options_from_collection_for_select(@search_options[key]['search_collection'], @search_options[key]['id'], @search_options[key]['name'], params["by_#{key}"])
       - if @search_options[key]['autocomplete']
-        = text_field_tag "by_#{key}_name", params["by_#{key}_name"], :class => 'lookup_search_input', "ng-controller"=>"AutocompleteController", "ng-model"=>"autocompleteModel", "typeahead"=>"name.value as name.label for name in getNames(#{@region.id}, '#{key}', $viewValue) | filter:$viewValue", "typeahead-loading"=>"loadingNames"
+        = text_field_tag "by_#{key}_name", params["by_#{key}_name"], :class => 'lookup_search_input', "ng-controller"=>"AutocompleteController", "ng-model"=>"autocompleteModel", "typeahead"=>"name.value as name.label for name in getNames(#{@region.id}, 1, '#{key}', $viewValue) | filter:$viewValue", "typeahead-loading"=>"loadingNames"
         %i{"ng-show"=>"loadingNames", :class=>"glyphicon glyphicon-refresh"}
       - if (['city', 'zone', 'type'].include? key)
         %span.info Limit results by
@@ -16,6 +16,10 @@
         %span.info or more machines.
       = submit_tag 'Search', :class => 'search', :id => "#{key}_search_button"
 :javascript
+  angular.element(jQuery('#other_search_options')).ready(function() {
+    angular.bootstrap(jQuery('#by_location_name'), ["pbm"]);
+    angular.bootstrap(jQuery('#by_machine_name'), ["pbm"]);
+  });
   jQuery(function () {
     jQuery('.location_search').on('submit', function(e) {
       e.preventDefault();
