@@ -8,7 +8,7 @@ class LocationsController < InheritedResources::Base
     @location_data = locations_javascript_data(@locations)
 
     respond_with(@locations) do |format|
-      format.html { render :partial => "locations/locations", :layout => false }
+      format.html { render :layout => false }
     end
   end
 

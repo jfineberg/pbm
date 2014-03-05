@@ -5,15 +5,11 @@
   = hidden_field_tag :location_id, l.id
   = select_tag :add_machine_by_id, options_for_select(['']) + options_from_collection_for_select(Machine.all.sort_by(&:massaged_name), 'id', 'name_and_year', params[:add_machine_by_id]), :class => 'lookup_search_select'
   %span or
-  = text_field_tag :add_machine_by_name, params[:add_machine_by_name], :class => 'lookup_search_input', "ng-controller"=>"AutocompleteController", "ng-model"=>"autocompleteModel", "typeahead"=>"name.value as name.label for name in getNames(#{@region.id}, '', 'machine', $viewValue) | filter:$viewValue", "typeahead-loading"=>"loadingNames"
+  = text_field_tag "add_machine_by_name_#{l.id}", params[:add_machine_by_name], :class => 'lookup_search_input', "ng-controller"=>"AutocompleteController", "ng-model"=>"autocompleteModel", "typeahead"=>"name.value as name.label for name in getNames(#{@region.id}, '', 'machine', $viewValue) | filter:$viewValue", "typeahead-loading"=>"loadingNames"
   %i{"ng-show"=>"loadingNames", :class=>"glyphicon glyphicon-refresh"}
   = submit_tag 'Add', :id => 'add'
 
 :javascript
-  angular.element(jQuery('#add_machine_by_name')).ready(function() {
-    angular.bootstrap(jQuery('#add_machine_by_name'), ["pbm"]);
-  });
-
   jQuery(function () {
     jQuery("#dialog-message").css("display","none");
   });

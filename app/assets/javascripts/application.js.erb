@@ -26,7 +26,6 @@ function toggleData(name, id) {
   var main = id ? '_' + id : '';
 
   jQuery('#' + name + main).toggle();
-  toggleArrows(name, id);
 }
 
 function clearInfoWindows() {
@@ -128,18 +127,7 @@ function showLocationDetail(locationID) {
   locationLookupMapCenter(locationID);
 
   jQuery('#show_location_detail_location_' + locationID).toggle();
-  toggleData('location_detail_location', locationID);
-  toggleArrows('location_detail', locationID);
-}
-
-function singleLocationLoad(region, locationID) {
-  showLocationDetail(locationID);
-  toggleData('show_machines_location', locationID);
-
-  jQuery('#show_machines_location_' + locationID).html(loadingHTML());
-  jQuery.get('/' + region + '/locations/' + locationID + '/render_machines', function(data) {
-    jQuery('#show_machines_location_' + locationID).html(data);
-  });
+  jQuery('#location_detail_location_' + locationID).toggle();
 }
 
 function locationLookupMapCenter(locationID) {
